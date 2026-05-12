@@ -8,7 +8,6 @@ const app = express();
 const port = 3000;
 
 
-//Middleware - Função que trata as informações recebidas
 app.use(express.json());
 
 const connectDB = async () => {
@@ -28,7 +27,11 @@ app.post("/tarefas", async (req, res) => {
         const novaTarefa = await Tarefa.create(req.body)
         res.json(novaTarefa)
     } catch (error) {
-        res.send({ error: error })
+        console.error(error); // Vê no console também
+        res.status(500).json({
+            erro: error.message,
+            details: error
+        })
     }
 })
 
