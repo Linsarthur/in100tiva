@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import mongooseSequence from "mongoose-sequence"
 
-
 const TarefaSchema = new mongoose.Schema({
     titulo: {
         type: String,
@@ -15,7 +14,8 @@ const TarefaSchema = new mongoose.Schema({
         type: String,
         default: "To do"
     }
+}, {
+    timestamps: true  
 })
-
 
 export default mongoose.model("Tarefa", TarefaSchema);
